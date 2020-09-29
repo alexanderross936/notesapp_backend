@@ -5,9 +5,8 @@
   "engines": {
     "node": "12.11.1"
     },
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

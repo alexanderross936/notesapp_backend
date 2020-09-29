@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 const config = require('config')
 const { check, validationResult } = require("express-validator");
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://127.0.0.1/one_database';
+var mongoDB = 'mongodb+srv://alex:@cluster0.92wrm.mongodb.net/<dbname>?retryWrites=true&w=majority';
 const jwt = require('jsonwebtoken');
 require('./models/User')
 const auth = require('./auth')
