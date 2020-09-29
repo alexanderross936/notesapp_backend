@@ -6,7 +6,6 @@
     "node": "12.11.1"
     },
   "scripts": {
-    "start": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
