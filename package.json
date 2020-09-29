@@ -1,7 +1,10 @@
 {
   "name": "notesapp",
+  "description": "a really cool app",
   "version": "1.0.0",
-  "description": "",
+  "engines": {
+    "node": "12.11.1"
+    },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
