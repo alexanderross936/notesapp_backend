@@ -182,16 +182,17 @@ app.get('/users', auth, (req, res) => {
 
 })
 
-app.get('/notes', (req, res) => {
-   Note.find({}, function(err, notes){
-       let NoteMap = {};
+app.get('/notes', auth, (req, res) => {
+    const user = req.user.id;
+    Note.find({User: user}, function(err, notes){
+        let NoteMap = {};
 
-       notes.forEach(function(note){
-       NoteMap[note._id] = note;            
-       });
+        notes.forEach(function(note){
+        NoteMap[note._id] = note;            
+        });
 
-   res.send(NoteMap);
-   });
+    res.send(NoteMap);
+    });
 });
 
 app.get('/note/:id', (req, res) => {
