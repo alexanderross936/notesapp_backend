@@ -182,12 +182,12 @@ app.get('/users', auth, (req, res) => {
 
 })
 
-app.get('/note', (req, res) => {
+app.get('/notes', (req, res) => {
    Note.find({}, function(err, notes){
        let NoteMap = {};
 
        notes.forEach(function(note){
-       PostMap[post._id] = note;            
+       NoteMap[note._id] = note;            
        });
 
    res.send(NoteMap);
