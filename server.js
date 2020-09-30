@@ -1,5 +1,5 @@
 const express = require('express');
-var cors = require('cors')
+const cors = require('cors');
 const bcrypt = require('bcrypt')
 const config = require('config')
 const { check, validationResult } = require("express-validator");
@@ -19,9 +19,10 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const app = express();
 
-app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
 // app.use(express.static())
 
 app.get('/api/user', auth, async(req, res) => {
