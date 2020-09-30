@@ -24,6 +24,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.cors());
 app.use(express.static())
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
 app.get('/api/user', auth, async(req, res) => {
     try {
