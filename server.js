@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 // app.use(express.static())
 
-app.get('/user', auth, async(req, res) => {
+app.get('/api/user', auth, async(req, res) => {
     try {
         const user = await (await User.findById(req.user.id)).isSelected('-password');
         res.json(user);
@@ -34,7 +34,7 @@ app.get('/user', auth, async(req, res) => {
     }
 });
 
-app.post('/register', 
+app.post('/api/register', 
 [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please put valid email').isEmail(),
@@ -102,7 +102,7 @@ jwt.sign(
 
 })
 
-app.post('/login', 
+app.post('/api/login', 
 [
     check('email', 'Please put valid email').isEmail(),
     check('password', 'Password is required')
@@ -159,7 +159,7 @@ jwt.sign(payload,
 
 })
 
-app.post('/add_note', auth, (req, res) => {
+app.post('/api/add_note', auth, (req, res) => {
     let note = new Note(req.body);
     note.save().then(note => {
         res.status(200).json({'note': 'Note added successfully'});
@@ -169,7 +169,7 @@ app.post('/add_note', auth, (req, res) => {
 });
 
 
-app.get('/users', auth, (req, res) => {
+app.get('/api/users', auth, (req, res) => {
     Users.find({}, function(err, users){
         Usersmap = {};
 
@@ -182,7 +182,7 @@ app.get('/users', auth, (req, res) => {
 
 })
 
-app.get('/notes', auth, (req, res) => {
+app.get('/api/notes', auth, (req, res) => {
     const user = req.user.id;
     Note.find({User: user}, function(err, notes){
         let NoteMap = {};
@@ -195,7 +195,7 @@ app.get('/notes', auth, (req, res) => {
     });
 });
 
-app.get('/note/:id', (req, res) => {
+app.get('/api/note/:id', (req, res) => {
     let id = req.params.id;
     Note.findById(id, function(err, note) {
         res.json(note);
