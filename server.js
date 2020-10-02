@@ -21,9 +21,9 @@ const app = express();
 
 
 app.use(express.json());
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
 app.use(cors());
-app.use(express.static())
+// app.use(express.static())
 
 
 app.get('/api/user', auth, async(req, res) => {
