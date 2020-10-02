@@ -2,6 +2,7 @@
   "name": "notesapp",
   "description": "a really cool app",
   "version": "1.0.0",
+  "main": "server.js",
   "engines": {
     "node": "12.11.1"
   },
