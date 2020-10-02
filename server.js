@@ -5,7 +5,7 @@ const config = require('config')
 const { check, validationResult } = require("express-validator");
 var mongoose = require('mongoose');
 var connectDB = require('./config/db')
-var mongoDB = 'mongodb://127.0.0.1/one_database';
+// var mongoDB = 'mongodb://127.0.0.1/one_database';
 const jwt = require('jsonwebtoken');
 require('./models/User')
 const auth = require('./auth')
@@ -15,7 +15,7 @@ require('./config/default.json')
 
 connectDB()
 
-var db = mongoose.connection;
+// var db = mongoose.connection;
 
 const app = express();
 
