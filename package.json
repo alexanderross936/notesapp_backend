@@ -10,7 +10,8 @@
     "dev": "concurrently \"npm run start\" \"npm run client\""
   },
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "npm":"6.x"
   },
   "author": "",
   "license": "ISC",
