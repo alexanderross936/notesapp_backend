@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const config = require('config')
 const { check, validationResult } = require("express-validator");
 var mongoose = require('mongoose');
+var connectDB = require('./config/db')
 var mongoDB = 'mongodb://127.0.0.1/one_database';
 const jwt = require('jsonwebtoken');
 require('./models/User')
@@ -11,23 +12,18 @@ const auth = require('./auth')
 const User = require('./models/User');
 const Note = require('./models/Note');
 require('./config/default.json')
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
-mongoose.connect(mongoDB, { useNewUrlParser: true });
 
-var db = mongoose.connection;
+connectDB()
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// var db = mongoose.connection;
 
 const app = express();
 
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.cors());
-app.use(express.static())
+app.use(cors());
+// app.use(express.static())
 
 
 app.get('/api/user', auth, async(req, res) => {
