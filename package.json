@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "main": "server.js",
   "engines": {
-    "start": "node server.js",
     "node": "12.x"
   },
   "scripts": {
