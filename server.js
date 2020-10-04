@@ -214,7 +214,7 @@ app.delete('/api/note/delete/:id', (req, res) => {
         // You can really do this however you want, though.
         const response = {
             message: "Note successfully deleted",
-            id: note._id
+            id: id
         };
         return res.status(200).send(response);
     });
