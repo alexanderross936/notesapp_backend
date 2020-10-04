@@ -13,15 +13,17 @@ const User = require('./models/User');
 const Note = require('./models/Note');
 require('./config/default.json')
 
+const app = express()
+
 connectDB()
 
 // var db = mongoose.connection;
 
-app.use(urlencoded({
+app.use(express.urlencoded({
     extended: true
   }));
 
-app.use(json());
+app.use(express.json());
 
 app.use(cors());
 
