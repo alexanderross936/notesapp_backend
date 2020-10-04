@@ -17,4 +17,4 @@ Text: {
 }
 });
 
-module.exports = Recipe = mongoose.model('Note', NoteSchema);
+module.exports = Note = mongoose.model('Note', NoteSchema);
