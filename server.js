@@ -164,12 +164,22 @@ jwt.sign(payload,
 })
 
 app.post('/api/add_note', auth, (req, res) => {
-    let note = new Note(req.body);
-    note.save().then(note => {
-        res.status(200).json({'note': 'Note added successfully'});
-    }).catch(err => {
-        res.status(400).send('Adding failed');
-    });
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+
+        const newNote = new Note({
+            Title: req.body.title,
+            Text: req.body.text,
+            User: user
+        });
+        
+        const note = await newNote.save();
+
+        res.json(note);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error.')
+    }
 });
 
 
@@ -188,14 +198,12 @@ app.get('/api/users', auth, (req, res) => {
 
 app.get('/api/notes', auth, (req, res) => {
     const user = req.user.id;
-    Note.find({User: user}, function(err, notes){
-        let NoteMap = {};
-
-        notes.forEach(function(note){
-        NoteMap[note._id] = note;            
-        });
-
-    res.send(NoteMap);
+    Note.find({User: user}, (err, notes) => {
+        // Note that this error doesn't mean nothing was found,
+        // it means the database had an error while searching, hence the 500 status
+        if (err) return res.status(500).send(err)
+        // send the list of all people
+        return res.status(200).send(notes);
     });
 });
 
