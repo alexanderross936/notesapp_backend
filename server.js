@@ -163,7 +163,7 @@ jwt.sign(payload,
 
 })
 
-app.post('/api/add_note', auth, (req, res) => {
+app.post('/api/add_note', auth, async(req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
 
