@@ -17,11 +17,11 @@ connectDB()
 
 // var db = mongoose.connection;
 
-app.use(bodyParser.urlencoded({
+app.use(urlencoded({
     extended: true
   }));
 
-app.use(bodyParser.json());
+app.use(json());
 
 app.use(cors());
 
