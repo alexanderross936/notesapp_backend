@@ -1,14 +1,17 @@
 {
-    "name": "myapp",
-    "description": "a really cool app",
-    "version": "1.0.0",
-    "main": "server.js",
-    "engines": {
-      "node": "12.x"
-      },
+  "name": "notesapp",
+  "description": "a really cool app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "engines": {
+    "start": "node server.js",
+    "node": "12.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
