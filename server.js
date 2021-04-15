@@ -228,9 +228,6 @@ app.delete('/api/note/delete/:id', (req, res) => {
     });
 })
 
-
-if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
-
 app.listen(process.env.PORT || 4000, () => {
     console.log('App listening on PORT 4000')
 })
